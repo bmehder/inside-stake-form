@@ -18,6 +18,10 @@
 </script>
 
 <main>
+  <img
+    src="https://insidestake.com/wp-content/uploads/Inside-Stake-Splash-blue.png"
+    alt="logo"
+  />
   {#if submitStatus === 'submitting'}
     <p>Submitting...</p>
   {:else if submitStatus === 'failed'}
@@ -25,18 +29,19 @@
   {:else if submitStatus === 'success'}
     <p>Form submitted successfully.</p>
   {:else}
-    <h1>This is not meant to be pretty, yet. 🤡</h1>
+    <!-- <h1>This is not meant to be pretty, yet. 🤡</h1> -->
     <form on:submit|preventDefault={handleSubmit}>
       <div>
         <label for="investmentGroupName">
           Name of Investment Group
-          <input type="text" name="investmentGroupName" />
+          <input type="text" name="investmentGroupName" required />
         </label>
       </div>
       <div>
         <label for="preferToPayBy">
           I prefer to be paid by:
-          <select name="preferToPayBy">
+          <select name="preferToPayBy" required>
+            <option selected="true" disabled="disabled">Select one...</option>
             <option>ACH</option>
             <option>Wire (Includes $30 fee)</option>
             <option>Check</option>
@@ -47,6 +52,7 @@
         <label for="formOfAccount">
           Form of Account:
           <select name="formOfAccount">
+            <option selected="true" disabled="disabled">Select one...</option>
             <option>Business</option>
             <option>Individual</option>
           </select>
@@ -54,44 +60,45 @@
       </div>
       <div>
         <label for="businessName">
-          Business Name (If applicable)
-          <input type="text" name="businessName" />
+          Business Name (if applicable)
+          <input type="text" name="businessName" required />
         </label>
       </div>
       <div>
         <label for="firstName">
           First Name
-          <input type="text" name="firstName" />
+          <input type="text" name="firstName" required />
         </label>
       </div>
       <div>
         <label for="lastName">
           Last Name
-          <input type="text" name="lastName" />
+          <input type="text" name="lastName" required />
         </label>
       </div>
       <div>
         <label for="address1">
           Address 1
-          <input type="text" name="address1" />
+          <input type="text" name="address1" required />
         </label>
       </div>
       <div>
         <label for="address2">
           Address 2
-          <input type="text" name="address2" />
+          <input type="text" name="address2" required />
         </label>
       </div>
       <div>
         <label for="city">
           City
-          <input type="text" name="city" />
+          <input type="text" name="city" required />
         </label>
       </div>
       <div>
         <label for="state">
           State
-          <select name="state">
+          <select name="state" required>
+            <option selected="true" disabled="disabled">Select one...</option>
             <option value="AL">Alabama</option>
             <option value="AK">Alaska</option>
             <option value="AZ">Arizona</option>
@@ -149,68 +156,79 @@
       <div>
         <label for="zip">
           Zip Code
-          <input type="text" name="zip" />
+          <input type="text" name="zip" required />
         </label>
       </div>
       <div>
         <label for="phone">
           Phone
-          <input type="phone" name="phone" />
+          <input type="phone" name="phone" required />
         </label>
       </div>
       <div>
         <label for="email">
           Email
-          <input type="email" name="email" />
+          <input type="email" name="email" required />
         </label>
       </div>
       <div>
         <label for="bankName">
           Bank Name
-          <input type="text" name="bankName" />
+          <input type="text" name="bankName" required />
         </label>
       </div>
       <div>
         <label for="routing">
-          Routing Number (or ACH Number)
-          <input type="text" name="routing" />
+          Routing Number (or ACH #)
+          <input type="text" name="routing" required />
         </label>
       </div>
       <div>
         <label for="accountNumber">
-          Account Number (or ACH Number)
-          <input type="text" name="accountNumber" />
+          Account Number (or ACH #)
+          <input type="text" name="accountNumber" required />
         </label>
       </div>
       <div>
         <label for="accountType">
           Account Type:
-          <select name="accountType">
+          <select name="accountType" required>
+            <option selected="true" disabled="disabled">Select one...</option>
             <option>Checking</option>
             <option>Savings</option>
           </select>
         </label>
       </div>
-      <div>
-        <input type="checkbox" name="isFee" required /><label for="isFee"
+      <div class="checkbox">
+        <input type="checkbox" name="isFee" required /><label
+          class="checkbox-label"
+          for="isFee"
           >I agree to any reasonable fees associated with sending a direct
           payment to my bank not to exceed $30 total per transfer (up to $10 for
           ACH and $30 for Wires Transfers)</label
         >
       </div>
-      <div>
+      <div class="checkbox">
         <input type="checkbox" name="isSeveralDays" required /><label
+          class="checkbox-label"
           for="isSeveralDays"
           >I recognize it may take several days to verify my account and banking
           info.</label
         >
       </div>
+      <hr />
       <div>
         <label for="authorize">
-          By Initialing here I authorize the Manager to use this information
+          By Initialing here, I authorize the Manager to use this information
           confidentially to enable payments of distributions to my account. No
           other actions will be taken with this information.
-          <input type="text" name="authorize" />
+          <input
+            class="authorize"
+            type="text"
+            name="authorize"
+            placeholder="Your initials here..."
+            required
+          />
         </label>
       </div>
       <div>
@@ -222,10 +240,82 @@
 
 <style>
   main {
-    width: 600px;
+    width: 350px;
     margin: 4rem auto;
+    padding: 1rem 0.5rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #424242;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+  img {
+    display: block;
+    width: 95%;
+    margin: auto;
+    border-radius: 4px;
   }
   div {
     margin: 1rem;
+  }
+  label,
+  input,
+  select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+  }
+  label {
+    font-weight: 600;
+    line-height: 1.25rem;
+  }
+  input,
+  select {
+    margin-top: 0.25rem;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: #30639c;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 1rem;
+  }
+  .checkbox input {
+    width: 50px;
+    height: 50px;
+    flex: 1;
+    box-shadow: none;
+  }
+  .checkbox label {
+    flex: 9;
+    padding: 0;
+  }
+  hr {
+    margin: 2rem 1rem;
+    border-color: #eee;
+  }
+  .authorize {
+    margin: 1rem auto;
+  }
+  input[type='submit'] {
+    padding: 1rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    background: #30639c;
+    color: white;
+    transition: transform 200ms ease-in-out;
+    cursor: pointer;
+  }
+  input[type='submit']:hover {
+    transform: scale(0.98);
+  }
+  p {
+    margin: 2rem auto 1rem;
+    text-align: center;
+    font-size: 2rem;
   }
 </style>
