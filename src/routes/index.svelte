@@ -6,7 +6,7 @@
 
     const formData = new FormData(data.currentTarget)
 
-    const response = await fetch('/api/contact.json', {
+    const response = await fetch('/api/form.json', {
       method: 'POST',
       body: formData,
     })
@@ -21,15 +21,15 @@
   <h1>This is not meant to be pretty, yet. 🤡</h1>
   <form on:submit|preventDefault={handleSubmit}>
     <div>
-      <label for="investment-group-name">
+      <label for="investmentGroupName">
         Name of Investment Group
-        <input type="text" name="investment-group-name" />
+        <input type="text" name="investmentGroupName" />
       </label>
     </div>
     <div>
-      <label for="prefer-to-pay-by">
+      <label for="preferToPayBy">
         I prefer to be paid by:
-        <select name="prefer-to-pay-by">
+        <select name="preferToPayBy">
           <option>ACH</option>
           <option>Wire (Includes $30 fee)</option>
           <option>Check</option>
@@ -37,42 +37,42 @@
       </label>
     </div>
     <div>
-      <label for="form-of-account">
+      <label for="formOfAccount">
         Form of Account:
-        <select name="form-of-account">
+        <select name="formOfAccount">
           <option>Business</option>
           <option>Individual</option>
         </select>
       </label>
     </div>
     <div>
-      <label for="business-name">
+      <label for="businessName">
         Business Name (If applicable)
-        <input type="text" name="business-name" />
+        <input type="text" name="businessName" />
       </label>
     </div>
     <div>
-      <label for="first-name">
+      <label for="firstName">
         First Name
-        <input type="text" name="first-name" />
+        <input type="text" name="firstName" />
       </label>
     </div>
     <div>
-      <label for="last-name">
+      <label for="lastName">
         Last Name
-        <input type="text" name="last-name" />
+        <input type="text" name="lastName" />
       </label>
     </div>
     <div>
-      <label for="address-1">
+      <label for="address1">
         Address 1
-        <input type="text" name="address-1" />
+        <input type="text" name="address1" />
       </label>
     </div>
     <div>
-      <label for="address-2">
+      <label for="address2">
         Address 2
-        <input type="text" name="address-2" />
+        <input type="text" name="address2" />
       </label>
     </div>
     <div>
@@ -84,7 +84,7 @@
     <div>
       <label for="state">
         State
-        <select>
+        <select name="state">
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
@@ -158,47 +158,48 @@
       </label>
     </div>
     <div>
-      <label for="bank-name">
+      <label for="bankName">
         Bank Name
-        <input type="text" name="bank-name" />
+        <input type="text" name="bankName" />
       </label>
     </div>
     <div>
-      <label for="routing-number">
+      <label for="routing">
         Routing Number (or ACH Number)
-        <input type="text" name="routing-number" />
+        <input type="text" name="routing" />
       </label>
     </div>
     <div>
-      <label for="account-number">
+      <label for="accountNumber">
         Account Number (or ACH Number)
-        <input type="text" name="account-number" />
+        <input type="text" name="accountNumber" />
       </label>
     </div>
     <div>
-      <label for="account-type">
+      <label for="accountType">
         Account Type:
-        <select name="account-type">
+        <select name="accountType">
           <option>Checking</option>
           <option>Savings</option>
         </select>
       </label>
     </div>
     <div>
-      <input type="checkbox" name="fee" /><label for="fee"
+      <input type="checkbox" name="isFee" required /><label for="isFee"
         >I agree to any reasonable fees associated with sending a direct payment
         to my bank not to exceed $30 total per transfer (up to $10 for ACH and
         $30 for Wires Transfers)</label
       >
     </div>
     <div>
-      <input type="checkbox" name="several-days" /><label for="several-days"
+      <input type="checkbox" name="isSeveralDays" required /><label
+        for="isSeveralDays"
         >I recognize it may take several days to verify my account and banking
         info.</label
       >
     </div>
     <div>
-      <input type="checkbox" name="authorize" /><label for="authorize"
+      <input type="checkbox" name="isAuthorize" /><label for="isAuthorize"
         >By Initialing here I authorize the Manager to use this information
         confidentially to enable payments of distributions to my account. No
         other actions will be taken with this information.</label
