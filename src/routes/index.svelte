@@ -18,10 +18,7 @@
 </script>
 
 <main>
-  <img
-    src="https://insidestake.com/wp-content/uploads/Inside-Stake-Splash-blue.png"
-    alt="logo"
-  />
+  <img src="logo.png" alt="logo" />
   {#if submitStatus === 'submitting'}
     <p>Submitting...</p>
   {:else if submitStatus === 'failed'}
