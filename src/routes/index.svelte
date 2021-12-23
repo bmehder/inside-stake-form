@@ -198,12 +198,20 @@
         info.</label
       >
     </div>
-    <div>
+    <!-- <div>
       <input type="checkbox" name="isAuthorize" /><label for="isAuthorize"
         >By Initialing here I authorize the Manager to use this information
         confidentially to enable payments of distributions to my account. No
         other actions will be taken with this information.</label
       >
+    </div> -->
+    <div>
+      <label for="authorize">
+        By Initialing here I authorize the Manager to use this information
+        confidentially to enable payments of distributions to my account. No
+        other actions will be taken with this information.
+        <input type="text" name="authorize" />
+      </label>
     </div>
     <div>
       <input type="submit" value="Submit" />
