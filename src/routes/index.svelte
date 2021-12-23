@@ -237,8 +237,8 @@
 
 <style>
   main {
-    width: 350px;
-    margin: 4rem auto;
+    width: 450px;
+    margin: 2rem auto;
     padding: 1rem 0.5rem;
     background: white;
     border: 1px solid #ddd;
@@ -277,19 +277,19 @@
   }
   .checkbox {
     display: flex;
-    align-items: flex-start;
     gap: 25px;
     padding: 1rem;
   }
   .checkbox input {
     width: 50px;
     height: 50px;
+    margin: 0;
     flex: 1;
     box-shadow: none;
   }
   .checkbox label {
     flex: 9;
-    padding: 0;
+    padding: 6px;
   }
   hr {
     margin: 2rem 1rem;
