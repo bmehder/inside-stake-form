@@ -1,15 +1,22 @@
 <script>
   let submitStatus
 
+  $: isShowForm =
+    submitStatus !== 'submitting' &&
+    submitStatus !== 'failed' &&
+    submitStatus !== 'success'
+
   const handleSubmit = async data => {
     submitStatus = 'submitting'
 
     const formData = new FormData(data.currentTarget)
 
-    const response = await fetch('/api/form.json', {
+    const options = {
       method: 'POST',
       body: formData,
-    })
+    }
+
+    const response = await fetch('/api/form.json', options)
 
     const { message } = await response.json()
 
@@ -19,13 +26,20 @@
 
 <main>
   <img src="logo.png" alt="logo" />
+
   {#if submitStatus === 'submitting'}
     <p>Submitting...</p>
-  {:else if submitStatus === 'failed'}
+  {/if}
+
+  {#if submitStatus === 'failed'}
     <p>Something went wrong. :-(</p>
-  {:else if submitStatus === 'success'}
+  {/if}
+
+  {#if submitStatus === 'success'}
     <p>Form submitted successfully.</p>
-  {:else}
+  {/if}
+
+  {#if isShowForm}
     <form on:submit|preventDefault={handleSubmit}>
       <div>
         <label for="investmentGroupName">
