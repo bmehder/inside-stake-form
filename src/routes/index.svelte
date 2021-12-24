@@ -27,6 +27,8 @@
 <main>
   <img src="logo.png" alt="logo" />
 
+  <img class="ssl" src="ssl.svg" alt="Secure Payment Form" />
+
   {#if submitStatus === 'submitting'}
     <p>Submitting...</p>
   {/if}
@@ -184,25 +186,25 @@
       <div>
         <label for="bankName">
           Bank Name
-          <input type="text" name="bankName" required />
+          <input type="text" name="bankName" />
         </label>
       </div>
       <div>
         <label for="routing">
           Routing Number (or ACH #)
-          <input type="text" name="routing" required />
+          <input type="text" name="routing" />
         </label>
       </div>
       <div>
         <label for="accountNumber">
-          Account Number (or ACH #)
-          <input type="text" name="accountNumber" required />
+          Account Number
+          <input type="text" name="accountNumber" />
         </label>
       </div>
       <div>
         <label for="accountType">
           Account Type:
-          <select name="accountType" required>
+          <select name="accountType">
             <option selected="true" disabled="disabled">Select one...</option>
             <option>Checking</option>
             <option>Savings</option>
@@ -215,7 +217,7 @@
           for="isFee"
           >I agree to any reasonable fees associated with sending a direct
           payment to my bank not to exceed $30 total per transfer (up to $10 for
-          ACH and $30 for Wires Transfers)</label
+          ACH and $30 for Wire transfers).</label
         >
       </div>
       <div class="checkbox">
@@ -264,6 +266,10 @@
     width: 95%;
     margin: auto;
     border-radius: 4px;
+  }
+  .ssl {
+    width: 50%;
+    margin-top: 2rem;
   }
   div {
     margin: 1rem;
