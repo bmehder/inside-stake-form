@@ -26,7 +26,6 @@
   {:else if submitStatus === 'success'}
     <p>Form submitted successfully.</p>
   {:else}
-    <!-- <h1>This is not meant to be pretty, yet. 🤡</h1> -->
     <form on:submit|preventDefault={handleSubmit}>
       <div>
         <label for="investmentGroupName">
@@ -82,7 +81,7 @@
       <div>
         <label for="address2">
           Address 2
-          <input type="text" name="address2" required />
+          <input type="text" name="address2" />
         </label>
       </div>
       <div>
@@ -314,5 +313,11 @@
     margin: 2rem auto 1rem;
     text-align: center;
     font-size: 2rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    main {
+      width: 100%;
+    }
   }
 </style>
