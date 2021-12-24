@@ -16,7 +16,7 @@
       body: formData,
     }
 
-    const response = await fetch('/api/form.json', options)
+    const response = await fetch('/api/form', options)
 
     const { message } = await response.json()
 

@@ -20,8 +20,18 @@ export const post = async request => {
   const isSeveralDays = request.body.get('isSeveralDays')
   const authorize = request.body.get('authorize')
 
+  let fee, severalDays
+
+  if (isFee === 'on')
+    fee =
+      'I agree to any reasonable fees associated with sending a direct payment to my bank not to exceed $30 total per transfer (up to $10 for ACH and $30 for Wires Transfers)'
+
+  if (isSeveralDays === 'on')
+    severalDays =
+      'I recognize it may take several days to verify my account and banking info.'
+
   const res = await fetch(
-    `https://docs.google.com/forms/d/e/1FAIpQLSfxtoB1g3xH5gPPX4W9OLzqvxLuA6SePdophdTapmCzhhJzfQ/formResponse?usp=pp_url&entry.162431829=${investmentGroupName}&entry.1781906895=${preferToPayBy}&entry.1440485456=${formOfAccount}&entry.1021862647=${businessName}&entry.1684099418=${firstName}&entry.1425369883=${lastName}&entry.31807725=${address1}&entry.2051771582=${address2}&entry.2132796715=${city}&entry.184029313=${state}&entry.1607422866=${zip}&entry.1664345986=${phone}&entry.1012997659=${email}&entry.1956771599=${bankName}&entry.559012598=${routing}&entry.2045576081=${accountNumber}&entry.1217910360=${accountType}&entry.1163836722=I+agree+to+any+reasonable+fees+associated+with+sending+a+direct+payment+to+my+bank+not+to+exceed+$30+total+per+transfer+(up+to+$10+for+ACH+and+$30+for+Wires+Transfers)&entry.1163836722=I+recognize+it+may+take+several+days+to+verify+my+account+and+banking+info.&entry.1634009900=${authorize}&submit=Submit`
+    `https://docs.google.com/forms/d/e/1FAIpQLSfxtoB1g3xH5gPPX4W9OLzqvxLuA6SePdophdTapmCzhhJzfQ/formResponse?usp=pp_url&entry.162431829=${investmentGroupName}&entry.1781906895=${preferToPayBy}&entry.1440485456=${formOfAccount}&entry.1021862647=${businessName}&entry.1684099418=${firstName}&entry.1425369883=${lastName}&entry.31807725=${address1}&entry.2051771582=${address2}&entry.2132796715=${city}&entry.184029313=${state}&entry.1607422866=${zip}&entry.1664345986=${phone}&entry.1012997659=${email}&entry.1956771599=${bankName}&entry.559012598=${routing}&entry.2045576081=${accountNumber}&entry.1217910360=${accountType}&entry.1163836722=${fee}&entry.1163836722=${severalDays}&entry.1634009900=${authorize}&submit=Submit`
   )
 
   if (res.status === 200) {
