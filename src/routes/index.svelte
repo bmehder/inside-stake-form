@@ -72,7 +72,7 @@
       </div>
       <div>
         <label for="businessName">
-          Business Name (if applicable)
+          Business Name
           <input type="text" name="businessName" required />
         </label>
       </div>
