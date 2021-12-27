@@ -72,8 +72,8 @@
       </div>
       <div>
         <label for="businessName">
-          Business Name
-          <input type="text" name="businessName" required />
+          Business Name (if applicable)
+          <input type="text" name="businessName" />
         </label>
       </div>
       <div>
