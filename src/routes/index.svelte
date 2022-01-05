@@ -6,23 +6,6 @@
     submitStatus !== 'submitting' &&
     submitStatus !== 'failed' &&
     submitStatus !== 'success'
-
-  const handleSubmit = async data => {
-    submitStatus = 'submitting'
-
-    const formData = new FormData(data.currentTarget)
-
-    const options = {
-      method: 'POST',
-      body: formData,
-    }
-
-    const response = await fetch('/api/form', options)
-
-    const { message } = await response.json()
-
-    submitStatus = message
-  }
 </script>
 
 <main>
@@ -43,7 +26,7 @@
   {/if}
 
   {#if isShowForm}
-    <Form {handleSubmit} />
+    <Form bind:submitStatus />
   {/if}
 </main>
 

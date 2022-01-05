@@ -1,5 +1,22 @@
 <script>
-  export let handleSubmit
+  export let submitStatus = ''
+
+  const handleSubmit = async data => {
+    submitStatus = 'submitting'
+
+    const formData = new FormData(data.currentTarget)
+
+    const options = {
+      method: 'POST',
+      body: formData,
+    }
+
+    const response = await fetch('/api/form', options)
+
+    const { message } = await response.json()
+
+    submitStatus = message
+  }
 </script>
 
 <form on:submit|preventDefault={handleSubmit}>
